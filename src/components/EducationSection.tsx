@@ -49,10 +49,10 @@ const EDUCATION: EducationItem[] = [
 
 const EducationSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -65,46 +65,50 @@ const EducationSection = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Title animation
-      gsap.fromTo(titleRef.current,
-        {
-          y: 100,
-          opacity: 0,
-          rotationX: 45,
-          filter: "blur(10px)",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          rotationX: 0,
-          filter: "blur(0px)",
-          duration: 1.5,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
+          {
+            y: 100,
+            opacity: 0,
+            rotationX: 45,
+            filter: "blur(10px)",
           },
-        }
-      );
+          {
+            y: 0,
+            opacity: 1,
+            rotationX: 0,
+            filter: "blur(0px)",
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
 
       // Timeline line animation
-      gsap.fromTo(timelineRef.current,
-        {
-          scaleY: 0,
-        },
-        {
-          scaleY: 1,
-          duration: 2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: timelineRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
+      if (timelineRef.current) {
+        gsap.fromTo(timelineRef.current,
+          {
+            scaleY: 0,
           },
-        }
-      );
+          {
+            scaleY: 1,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: timelineRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
 
       // Animate each card
       cardsRef.current.forEach((card, index) => {
@@ -137,7 +141,7 @@ const EducationSection = () => {
         );
 
         // 3D hover effect
-        card.addEventListener('mousemove', (e) => {
+        card.addEventListener('mousemove', (e: MouseEvent) => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
@@ -291,7 +295,9 @@ const EducationSection = () => {
 
               {/* Card */}
               <motion.div
-                ref={(el) => (cardsRef.current[i] = el)}
+                ref={(el) => {
+                  if (el) cardsRef.current[i] = el;
+                }}
                 className="ml-0 sm:ml-12 group"
                 style={{ transformStyle: 'preserve-3d' }}
                 onHoverStart={() => setHoveredIndex(i)}
@@ -409,7 +415,7 @@ const EducationSection = () => {
         </motion.div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .perspective-1000 {
           perspective: 1000px;
         }

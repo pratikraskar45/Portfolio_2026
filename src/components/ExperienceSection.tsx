@@ -102,89 +102,93 @@ const EXPERIENCE = [
 
 const ExperienceSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
-  const titleRef = useRef(null);
-  const containerRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // GSAP Animations
     const ctx = gsap.context(() => {
       // Title animation
-      gsap.fromTo(titleRef.current,
-        {
-          y: 100,
-          opacity: 0,
-          rotationX: 45,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          rotationX: 0,
-          duration: 1.5,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-      
-
-      // Animate each card with 3D rotation on scroll
-      cardsRef.current.forEach((card, index) => {
-        gsap.fromTo(card,
+      if (titleRef.current) {
+        gsap.fromTo(titleRef.current,
           {
-            rotationY: 90,
-            rotationX: 20,
+            y: 100,
             opacity: 0,
-            x: 100,
+            rotationX: 45,
           },
           {
-            rotationY: 0,
-            rotationX: 0,
+            y: 0,
             opacity: 1,
-            x: 0,
-            duration: 1,
-            delay: index * 0.2,
-            ease: "back.out(1.2)",
+            rotationX: 0,
+            duration: 1.5,
+            ease: "power4.out",
             scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              end: "bottom 15%",
+              trigger: titleRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
               toggleActions: "play none none reverse",
             },
           }
         );
+      }
+      
 
-        // Add hover 3D effect
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = (y - centerY) / 20;
-          const rotateY = (centerX - x) / 20;
-          
-          gsap.to(card, {
-            rotationY: rotateY,
-            rotationX: rotateX,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        });
+      // Animate each card with 3D rotation on scroll
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.fromTo(card,
+            {
+              rotationY: 90,
+              rotationX: 20,
+              opacity: 0,
+              x: 100,
+            },
+            {
+              rotationY: 0,
+              rotationX: 0,
+              opacity: 1,
+              x: 0,
+              duration: 1,
+              delay: index * 0.2,
+              ease: "back.out(1.2)",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
 
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {
-            rotationY: 0,
-            rotationX: 0,
-            duration: 0.5,
-            ease: "elastic.out(1, 0.5)",
+          // Add hover 3D effect
+          card.addEventListener('mousemove', (e: MouseEvent) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            gsap.to(card, {
+              rotationY: rotateY,
+              rotationX: rotateX,
+              duration: 0.5,
+              ease: "power2.out",
+            });
           });
-        });
+
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+              rotationY: 0,
+              rotationX: 0,
+              duration: 0.5,
+              ease: "elastic.out(1, 0.5)",
+            });
+          });
+        }
       });
     }, sectionRef);
 
@@ -340,7 +344,9 @@ const ExperienceSection = () => {
               style={{ transformStyle: 'preserve-3d' }}
             >
               <div
-                ref={(el) => (cardsRef.current[currentIndex] = el)}
+                ref={(el) => {
+                  if (el) cardsRef.current[currentIndex] = el;
+                }}
                 className="relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden transform-gpu cursor-pointer"
                 style={{ transformStyle: 'preserve-3d' }}
               >
@@ -499,7 +505,7 @@ const ExperienceSection = () => {
         </motion.div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .perspective-1000 {
           perspective: 1000px;
         }

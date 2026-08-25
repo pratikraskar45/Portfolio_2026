@@ -2,30 +2,30 @@ import FadeIn from './FadeIn';
 import { motion } from 'framer-motion';
 
 const SERVICES = [
-{
-number: '01',
-title: 'Frontend Development',
-description:
-'Building modern, responsive, and high-performance web interfaces using React, Tailwind CSS, and JavaScript — focused on smooth user experience and clean design.',
-},
-{
-number: '02',
-title: 'Backend Development',
-description:
-'Developing scalable backend systems and REST APIs using Python, Django, Java, and Spring Boot — creating secure and efficient server-side applications.',
-},
-{
-number: '03',
-title: 'Full Stack Web Applications',
-description:
-'Creating complete end-to-end web applications by combining modern frontend technologies with powerful backend architecture and database integration.',
-},
-{
-number: '04',
-title: 'Data Analysis & Dashboards',
-description:
-'Transforming raw business data into actionable insights using Power BI, Excel, Pandas, and NumPy — building interactive dashboards and analytical reports.',
-},
+  {
+    number: '01',
+    title: 'Backend Development',
+    description:
+      'Building reliable and scalable backend applications using Java, Spring Boot, Spring Data JPA, Hibernate, and JDBC, with a focus on clean architecture, business logic, and maintainable code.',
+  },
+  {
+    number: '02',
+    title: 'REST API Development',
+    description:
+      'Designing and developing RESTful APIs for authentication, CRUD operations, business workflows, search, filtering, and application integration using Spring Boot and Spring Data JPA.',
+  },
+  {
+    number: '03',
+    title: 'React Frontend Development',
+    description:
+      'Building responsive and user-friendly frontend interfaces using React.js, JavaScript, HTML5, and CSS3, with seamless integration with backend REST APIs.',
+  },
+  {
+    number: '04',
+    title: 'Database & Full Stack Integration',
+    description:
+      'Designing database entities and relationships and integrating backend services with MySQL and PostgreSQL to build complete full-stack applications with reliable data management.',
+  },
 ];
 
 const ServicesSection = () => {

@@ -153,7 +153,7 @@ const HeroSection = () => {
 
             <FadeIn delay={0.85} y={20}>
               <p className="mt-5 md:mt-7 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.3em] text-white/75">
-                Full Stack Developer · Data Analyst
+                Java Full Stack Developer 
               </p>
             </FadeIn>
           </div>

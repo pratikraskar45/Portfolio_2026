@@ -18,7 +18,7 @@ const PROJECTS: ProjectData[] = [
         number: '01',
         category: 'Product',
         name: 'Tattvabiz Agriculture Pvt Ltd',
-        liveUrl: 'https://tattvabiz-main.vercel.app/',
+        liveUrl: 'https://tattvabiz1-main.vercel.app/',
         col1Image1: '/tattvabiz.png',
         col1Image2: '/tattvabiz1.png',
         col2Image: '/tattvabiz3.png',
@@ -27,22 +27,13 @@ const PROJECTS: ProjectData[] = [
       number: '02',
       category: 'Project',
       name: 'ShedEX',
-      liveUrl: 'https://shedex.vercel.app/',
+      liveUrl: 'https://shedex1.vercel.app/',
       col1Image1: '/shedex.png',
       col1Image2: '/shedex1.png',
       col2Image: '/shedex2.png',
     },
-  {
+    {
     number: '03',
-    category: 'Personal · Django ',
-    name: 'E-commerce',
-    liveUrl: 'https://github.com/pratikraskar45/Shedex_ecom_project',
-    col1Image1: '/online.avif',
-    col1Image2: '/online2.png',
-    col2Image: '/online3.jpg',
-  },
-  {
-    number: '04',
     category: 'Personal · SpringBoot',
     name: 'Hotel Managment System',
     liveUrl: 'https://github.com/pratikraskar45/Spring_Hotel_app',
@@ -50,6 +41,16 @@ const PROJECTS: ProjectData[] = [
     col1Image2: '/Hotel-Management-System1.webp',
     col2Image: '/Hotel-Management-System1.webp',
   },
+  {
+    number: '04',
+    category: 'Personal · Django ',
+    name: 'E-commerce',
+    liveUrl: 'https://github.com/pratikraskar45/Shedex_ecom_project',
+    col1Image1: '/online.avif',
+    col1Image2: '/online2.png',
+    col2Image: '/online3.jpg',
+  },
+  
 ];
 
 interface ProjectCardProps {

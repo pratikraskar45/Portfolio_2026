@@ -3,8 +3,7 @@ import ContactButton from './ContactButton';
 import AnimatedText from './AnimatedText';
 
 const ABOUT_TEXT =
-  "I’m Pratik Raskar — a Software Developer passionate about building scalable web applications, modern digital products, and data-driven solutions. I specialize in both frontend and backend development using technologies like Python, Java, Django, Spring Boot, JavaScript, and REST APIs. Alongside software development, I also work as a Data Analyst, creating interactive dashboards and transforming complex data into meaningful business insights. I enjoy combining clean design, strong backend architecture, and analytics to build impactful real-world solutions.";
-
+  "I’m Pratik Raskar — a Java Backend Developer with 2 years of experience building scalable REST APIs and full-stack web applications. I specialize in Java, Spring Boot, Spring Data JPA, Hibernate, JDBC, and SQL, with hands-on experience developing CRUD operations, business workflows, authentication, and database relationships. I have worked with MySQL and PostgreSQL and use tools such as Git, Maven, and Postman for backend development. On the frontend, I work with React, JavaScript, HTML, and CSS to build responsive interfaces and integrate them with backend APIs. I enjoy building reliable, maintainable, and real-world applications by combining strong backend architecture with modern frontend development.";
 const AboutSection = () => {
   return (
     <section
@@ -99,28 +98,37 @@ const AboutSection = () => {
                       <div className="flex flex-col gap-5 sm:gap-6">
                         {[
                           {
-label: 'Programming Languages',
-items: ['Python', 'Java', 'JavaScript', 'SQL', 'HTML', 'CSS'],
+ label: 'Programming Languages',
+  items: ['Java', 'Python', 'JavaScript', 'SQL', 'HTML5', 'CSS3'],
 },
 {
-label: 'Frontend Development',
-items: ['React',  'Tailwind CSS', 'Responsive UI'],
+  label: 'Frontend Development',
+  items: ['React.js', 'JavaScript', 'HTML5', 'CSS3', 'Responsive UI'],
 },
 {
-label: 'Backend Development',
-items: ['Django', 'Spring Boot', 'REST APIs'],
+  label: 'Backend Development',
+  items: [
+    'Spring Boot',
+    'Spring MVC',
+    'Spring Data JPA',
+    'Hibernate',
+    'JDBC',
+    'REST APIs',
+    'Django',
+    'Django REST Framework',
+  ],
 },
 {
-label: 'Data Analytics',
-items: ['Power BI', 'Excel', 'Pandas', 'NumPy', 'Dashboard Development'],
+  label: 'Databases',
+  items: ['MySQL', 'PostgreSQL', 'SQL'],
 },
 {
-label: 'AI & GenAI',
-items: ['OpenAI', 'Gemini', 'Claude', 'Prompt Engineering'],
+  label: 'Development & API Tools',
+  items: ['Git', 'GitHub', 'Maven', 'Postman', 'VS Code', 'IntelliJ IDEA'],
 },
 {
-label: 'Tools & Platforms',
-items: ['Git', 'GitHub', 'Vercel', 'Figma'],
+  label: 'Other Skills',
+  items: ['Figma', 'API Integration', 'Authentication', 'Exception Handling', 'Pagination'],  
 },
                         ].map((group) => (
                           <div
